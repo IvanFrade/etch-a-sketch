@@ -1,15 +1,18 @@
 #drawing-area {
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     border: 2px solid black;
     border-radius: 5px;
 }
 
 .drawing-square {
-    background-color: aqua;
     width: 25%;
     height: 25%;
     flex-shrink: 0;
+}
+
+.drawing-square:hover {
+    background-color: black;
 }
