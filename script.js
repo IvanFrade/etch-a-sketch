@@ -12,7 +12,7 @@ function createDrawArea(squareNumber) {
             let r = 0;
             let g = 0;
             let b = 0;
-            let a = 1;
+            alpha += 0.1;
 
             if (rainbowMode) {
                 r = Math.floor(Math.random() * 255);
@@ -20,7 +20,7 @@ function createDrawArea(squareNumber) {
                 b = Math.floor(Math.random() * 255);
             }
 
-            div.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 1)`;
+            div.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
         });
 
         squareArray.push(div);
@@ -32,6 +32,7 @@ function createDrawArea(squareNumber) {
 let gameArea = document.querySelector("#drawing-area");
 let squareNumber = 16; // Default size is 16 * 16
 let rainbowMode = false;
+let alpha = 0;
 
 document.querySelector("#area-size-btn").addEventListener("click", () => {
     squareNumber = prompt("Input the number of squares per side (max.100)");
