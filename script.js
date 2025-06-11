@@ -40,6 +40,7 @@ document.querySelector("#area-size-btn").addEventListener("click", () => {
 });
 
 document.querySelector("#clear-btn").addEventListener("click", () => {
+    alpha = 0;
     createDrawArea(squareNumber);
 });
 
