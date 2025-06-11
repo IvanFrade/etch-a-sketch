@@ -8,7 +8,15 @@ function createDrawArea(squareNumber) {
         div.classList.add("drawing-square");
         let size = 600 / Math.sqrt(squareNumber);        
         div.style = `width: ${size}px; height: ${size}px;`;
-        div.addEventListener("mouseenter", () => { div.classList = "colored"});
+        div.addEventListener("mouseenter", () => { 
+            div.style.backgroundColor = "rgba(0, 0, 0, 1)";
+
+            // If random color mode is on
+            let r = Math.floor(Math.random() * 255);
+            let g = Math.floor(Math.random() * 255);
+            let b = Math.floor(Math.random() * 255);
+            div.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 1)`;
+        });
 
         squareArray.push(div);
     }
