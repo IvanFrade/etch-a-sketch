@@ -9,12 +9,17 @@ function createDrawArea(squareNumber) {
         let size = 600 / Math.sqrt(squareNumber);        
         div.style = `width: ${size}px; height: ${size}px;`;
         div.addEventListener("mouseenter", () => { 
-            div.style.backgroundColor = "rgba(0, 0, 0, 1)";
+            let r = 0;
+            let g = 0;
+            let b = 0;
+            let a = 1;
 
-            // If random color mode is on
-            let r = Math.floor(Math.random() * 255);
-            let g = Math.floor(Math.random() * 255);
-            let b = Math.floor(Math.random() * 255);
+            if (rainbowMode) {
+                r = Math.floor(Math.random() * 255);
+                g = Math.floor(Math.random() * 255);
+                b = Math.floor(Math.random() * 255);
+            }
+
             div.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 1)`;
         });
 
@@ -26,6 +31,7 @@ function createDrawArea(squareNumber) {
 
 let gameArea = document.querySelector("#drawing-area");
 let squareNumber = 16; // Default size is 16 * 16
+let rainbowMode = false;
 
 document.querySelector("#area-size-btn").addEventListener("click", () => {
     squareNumber = prompt("Input the number of squares per side (max.100)");
@@ -34,6 +40,13 @@ document.querySelector("#area-size-btn").addEventListener("click", () => {
 
 document.querySelector("#clear-btn").addEventListener("click", () => {
     createDrawArea(squareNumber);
+});
+
+document.querySelector("#rainbow-btn").addEventListener("click", () => {
+    console.log(rainbowMode);
+    rainbowMode = rainbowMode ? false : true;
+    console.log(rainbowMode);
+    
 });
 
 createDrawArea(squareNumber);
