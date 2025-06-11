@@ -1,17 +1,20 @@
 function createDrawArea(squareNumber) {
+    // Cap number of squares per size to 100 and calculate total number of squares
     squareNumber = squareNumber > 100 ? 1000 : (squareNumber * squareNumber);
     const squareArray = [];
     
     for (let i = 0; i < squareNumber; i++) {
         let div = document.createElement("div");
 
-        div.classList.add("drawing-square");
-        let size = 600 / Math.sqrt(squareNumber);        
-        div.style = `width: ${size}px; height: ${size}px;`;
+        // Set square size to a fraction of total size and disable shrink
+        let size = DRAWING_AREA_SIDE_SIZE / Math.sqrt(squareNumber);        
+        div.style.width = `${size}px`;
+        div.style.height = `${size}px`;
+        div.style.flexShrink = 0;
+
+
         div.addEventListener("mouseenter", () => { 
-            let r = 0;
-            let g = 0;
-            let b = 0;
+            let r = 0, g = 0, b = 0;    // Default to black color
             alpha += 0.1;
 
             if (rainbowMode) {
@@ -29,7 +32,9 @@ function createDrawArea(squareNumber) {
     gameArea.replaceChildren(...squareArray);
 }
 
-let gameArea = document.querySelector("#drawing-area");
+const DRAWING_AREA_SIDE_SIZE = 600;
+
+const gameArea = document.querySelector("#drawing-area");
 let squareNumber = 16; // Default size is 16 * 16
 let rainbowMode = false;
 let alpha = 0;

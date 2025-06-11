@@ -21,10 +21,6 @@ body {
     width: 600px;
 }
 
-.drawing-square {
-    flex-shrink: 0;
-}
-
 .colored {
     background-color: black;
 }
